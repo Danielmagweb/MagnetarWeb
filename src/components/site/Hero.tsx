@@ -38,7 +38,7 @@ export function Hero() {
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               We design and develop fast, beautiful and conversion-focused
-              websites for businesses worldwide. Built with modern technologies,
+              websites for businesses across the US. Built with modern technologies,
               optimized for performance and designed to impress.
             </p>
           </Reveal>

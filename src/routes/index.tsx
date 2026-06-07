@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "MagnetarWeb — Modern Websites That Help Businesses Grow" },
-      { name: "description", content: "Custom web development agency. We design and develop fast, beautiful, conversion-focused websites for businesses worldwide." },
+      { name: "description", content: "Custom web development agency. We design and develop fast, beautiful, conversion-focused websites for businesses across the US." },
       { property: "og:title", content: "MagnetarWeb — Modern Websites That Help Businesses Grow" },
       { property: "og:description", content: "Custom web development agency. Fast, beautiful, conversion-focused websites built with modern technologies." },
     ],
@@ -33,8 +33,8 @@ function Index() {
       <Pricing />
       <CarePlans />
       <Testimonials />
-      <FAQ />
       <Contact />
+      <FAQ />
       <Footer />
       <Toaster theme="dark" position="top-center" />
     </main>

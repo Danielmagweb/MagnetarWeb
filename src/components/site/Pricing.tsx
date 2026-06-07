@@ -6,7 +6,7 @@ const tiers = [
     price: "$499",
     tagline: "Perfect for new and small local businesses just getting online.",
     highlight: false,
-    delivery: "5–7 days",
+    delivery: "2–4 days",
     features: [
       "1-page website (landing page)",
       "Mobile-responsive design",
@@ -40,7 +40,7 @@ const tiers = [
     price: "$1,299",
     tagline: "For companies actively bringing in customers through the web.",
     highlight: false,
-    delivery: "3–7 days",
+    delivery: "1–3 weeks",
     features: [
       "Everything in Business",
       "Up to 10 pages",

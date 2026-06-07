@@ -10,7 +10,7 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
   {
     title: "General",
     items: [
-      { q: "How long does a website project take?", a: "Most websites are completed within 1–3 weeks depending on project size and feedback speed." },
+      { q: "How long does a website project take?", a: "Depending on the package, Starter websites take 2–4 days, Business websites take 4–7 days, and Premium websites take 1–3 weeks." },
       { q: "Do I need to provide content?", a: "Yes. You can provide text and images, or we can help organize existing content." },
       { q: "Can you redesign my existing website?", a: "Yes. Existing websites can be redesigned and modernized." },
       { q: "Will my website work on mobile devices?", a: "Yes. Every website is fully responsive." },
@@ -27,7 +27,7 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
       { q: "What is included in the Website Care Plan?", a: "Hosting, maintenance, backups, monitoring, and support." },
       { q: "Can I cancel the Website Care Plan anytime?", a: "Yes." },
       { q: "What happens if I cancel the Website Care Plan?", a: "Your website can be transferred to your own hosting provider." },
-      { q: "Is the domain included in the website price?", a: "No. Domains are purchased separately by the client." },
+      { q: "Is the domain included in the website price?", a: "It depends on the package. Our Core plan includes domain registration, while others may require you to purchase it separately." },
     ],
   },
   {
@@ -42,7 +42,7 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
   {
     title: "Payments",
     items: [
-      { q: "Do you require a deposit?", a: "Typically 50% upfront and 50% upon completion." },
+      { q: "Do you require a deposit?", a: "No. We do not take any upfront payments. You only pay after you see and approve the website." },
       { q: "What payment methods do you accept?", a: "Bank transfer, Stripe, PayPal, and major credit cards." },
       { q: "Are there any hidden fees?", a: "No." },
       { q: "Do you offer refunds?", a: "Due to the custom nature of web design, refunds are generally not available after work has begun." },
