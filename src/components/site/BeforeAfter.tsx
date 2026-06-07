@@ -69,24 +69,26 @@ export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProp
       <img
         src={beforeImage}
         alt="Before Design"
+        loading="lazy"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
-      <div className="absolute top-4 right-4 bg-black/70 text-gray-300 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm pointer-events-none border border-white/10">
+      <div className="absolute top-4 left-4 bg-black/70 text-gray-300 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm pointer-events-none border border-white/10 z-0">
         Before
       </div>
 
-      {/* After Image (Clipped overlay) */}
+      {/* After Image (Clipped overlay on the right) */}
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
-        style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+        style={{ clipPath: `polygon(${sliderPosition}% 0, 100% 0, 100% 100%, ${sliderPosition}% 100%)` }}
       >
         <img
           src={afterImage}
           alt="After Design"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute top-4 left-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm pointer-events-none">
-          MagnetarWeb Design
+        <div className="absolute top-4 right-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm pointer-events-none">
+          After (MagnetarWeb)
         </div>
       </div>
 

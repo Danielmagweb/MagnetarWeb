@@ -35,25 +35,25 @@ export function Transformations() {
   const visibleTransformations = showMore ? transformations : transformations.slice(0, 2);
 
   return (
-    <section id="transformations" className="py-24 bg-black relative">
+    <section id="transformations" className="py-24 bg-background relative border-y border-border/10">
       <div className="container mx-auto px-4 relative z-10">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">
-              Before & After <span className="text-indigo-400">Transformations</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground tracking-tight">
+              Before & After <span className="text-indigo-500">Transformations</span>
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-lg text-muted-foreground">
               Drag the slider to see how we turn outdated, clunky websites into modern, high-converting digital experiences.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
           {visibleTransformations.map((t, index) => (
             <Reveal key={index} delay={0.1 * index}>
               <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-white">{t.title}</h3>
-                <p className="text-gray-400 max-w-2xl">{t.desc}</p>
+                <h3 className="text-2xl font-semibold text-foreground">{t.title}</h3>
+                <p className="text-muted-foreground">{t.desc}</p>
                 <BeforeAfter 
                   beforeImage={t.before}
                   afterImage={t.after}
@@ -63,21 +63,34 @@ export function Transformations() {
           ))}
         </div>
 
-        {!showMore && (
-          <Reveal delay={0.3}>
-            <div className="mt-16 text-center">
+        <Reveal delay={0.3}>
+          <div className="mt-16 text-center">
+            {!showMore ? (
               <button
                 onClick={() => setShowMore(true)}
-                className="inline-flex items-center justify-center rounded-full bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/10 hover:scale-105"
+                className="inline-flex items-center justify-center rounded-full bg-primary/10 px-8 py-3.5 text-sm font-semibold text-primary backdrop-blur-md transition-all hover:bg-primary/20 hover:scale-105"
               >
                 Show more examples
                 <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-            </div>
-          </Reveal>
-        )}
+            ) : (
+              <button
+                onClick={() => {
+                  setShowMore(false);
+                  document.getElementById('transformations')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center rounded-full bg-secondary/80 px-8 py-3.5 text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:bg-secondary hover:scale-105"
+              >
+                Show less
+                <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg>
+              </button>
+            )}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
