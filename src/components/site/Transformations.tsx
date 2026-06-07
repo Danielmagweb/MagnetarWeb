@@ -69,10 +69,10 @@ export function Transformations() {
             {!showMore ? (
               <button
                 onClick={() => setShowMore(true)}
-                className="inline-flex items-center justify-center rounded-full bg-primary/10 px-8 py-3.5 text-sm font-semibold text-primary backdrop-blur-md transition-all hover:bg-primary/20 hover:scale-105"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-8 py-3.5 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:shadow-elegant"
               >
                 Show more examples
-                <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -82,10 +82,10 @@ export function Transformations() {
                   setShowMore(false);
                   document.getElementById('transformations')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-flex items-center justify-center rounded-full bg-secondary/80 px-8 py-3.5 text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:bg-secondary hover:scale-105"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-8 py-3.5 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:shadow-elegant"
               >
                 Show less
-                <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                 </svg>
               </button>
