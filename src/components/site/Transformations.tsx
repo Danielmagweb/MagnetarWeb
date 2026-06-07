@@ -39,8 +39,9 @@ export function Transformations() {
       <div className="container mx-auto px-4 relative z-10">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground tracking-tight">
-              Before & After <span className="text-indigo-500">Transformations</span>
+            <h2 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl mb-6">
+              <span className="text-gradient">Before & After</span>{" "}
+              <span className="text-gradient-brand">Transformations</span>
             </h2>
             <p className="text-lg text-muted-foreground">
               Drag the slider to see how we turn outdated, clunky websites into modern, high-converting digital experiences.
