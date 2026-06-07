@@ -1,0 +1,109 @@
+import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from 'react';
+
+interface BeforeAfterProps {
+  beforeImage: string;
+  afterImage: string;
+}
+
+export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProps) {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMove = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    const percent = (x / rect.width) * 100;
+    setSliderPosition(percent);
+  };
+
+  const onMouseMove = (e: MouseEvent) => {
+    if (!isDragging) return;
+    handleMove(e.clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    if (!isDragging) return;
+    handleMove(e.touches[0].clientX);
+  };
+
+  const stopDragging = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', stopDragging);
+      window.addEventListener('touchmove', onTouchMove, { passive: false });
+      window.addEventListener('touchend', stopDragging);
+    } else {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', stopDragging);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', stopDragging);
+    }
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', stopDragging);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', stopDragging);
+    };
+  }, [isDragging]);
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative w-full overflow-hidden rounded-xl bg-neutral-900 select-none aspect-[4/3] md:aspect-video cursor-ew-resize shadow-2xl"
+      onMouseDown={(e: ReactMouseEvent) => {
+        setIsDragging(true);
+        handleMove(e.clientX);
+      }}
+      onTouchStart={(e: ReactTouchEvent) => {
+        setIsDragging(true);
+        handleMove(e.touches[0].clientX);
+      }}
+    >
+      {/* Before Image (Background) */}
+      <img
+        src={beforeImage}
+        alt="Before Design"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      />
+      <div className="absolute top-4 right-4 bg-black/70 text-gray-300 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm pointer-events-none border border-white/10">
+        Before
+      </div>
+
+      {/* After Image (Clipped overlay) */}
+      <div 
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+      >
+        <img
+          src={afterImage}
+          alt="After Design"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute top-4 left-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm pointer-events-none">
+          MagnetarWeb Design
+        </div>
+      </div>
+
+      {/* Slider Handle */}
+      <div 
+        className="absolute top-0 bottom-0 w-1 bg-white z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)] transition-colors duration-150"
+        style={{ left: `calc(${sliderPosition}% - 2px)`, backgroundColor: isDragging ? '#818cf8' : 'white' }}
+      >
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center border border-gray-200"
+          style={{ transform: `translate(-50%, -50%) scale(${isDragging ? 1.1 : 1})`, transition: 'transform 0.15s ease' }}
+        >
+          <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" transform="rotate(90 12 12)" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+}
