@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from 'react';
+import { useState } from 'react';
 
 interface BeforeAfterProps {
   beforeImage: string;
@@ -8,63 +8,10 @@ interface BeforeAfterProps {
 export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    const percent = (x / rect.width) * 100;
-    setSliderPosition(percent);
-  };
-
-  const onMouseMove = (e: MouseEvent) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  };
-
-  const onTouchMove = (e: TouchEvent) => {
-    if (!isDragging) return;
-    e.preventDefault(); // Prevent native scrolling while dragging
-    handleMove(e.touches[0].clientX);
-  };
-
-  const stopDragging = () => {
-    setIsDragging(false);
-  };
-
-  useEffect(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('mouseup', stopDragging);
-      window.addEventListener('touchmove', onTouchMove, { passive: false });
-      window.addEventListener('touchend', stopDragging);
-    } else {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', stopDragging);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('touchend', stopDragging);
-    }
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', stopDragging);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('touchend', stopDragging);
-    };
-  }, [isDragging]);
 
   return (
     <div 
-      ref={containerRef}
-      className={`relative w-full overflow-hidden rounded-xl bg-neutral-900 select-none aspect-[4/3] md:aspect-video cursor-ew-resize shadow-2xl ${isDragging ? 'touch-none' : 'touch-pan-y'}`}
-      onMouseDown={(e: ReactMouseEvent) => {
-        setIsDragging(true);
-        handleMove(e.clientX);
-      }}
-      onTouchStart={(e: ReactTouchEvent) => {
-        setIsDragging(true);
-        handleMove(e.touches[0].clientX);
-      }}
+      className="relative w-full overflow-hidden rounded-xl bg-neutral-900 select-none aspect-[4/3] md:aspect-video shadow-2xl"
     >
       {/* Before Image (Background) */}
       <img
@@ -93,7 +40,7 @@ export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProp
         </div>
       </div>
 
-      {/* Slider Handle */}
+      {/* Visual Slider Handle (Pointer events none so clicks pass through to input) */}
       <div 
         className="absolute top-0 bottom-0 w-1 bg-white z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)] transition-colors duration-150"
         style={{ left: `calc(${sliderPosition}% - 2px)`, backgroundColor: isDragging ? '#0050d8' : 'white' }}
@@ -107,6 +54,20 @@ export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProp
           </svg>
         </div>
       </div>
+
+      {/* Native Range Input for Flawless Touch & Mouse Interaction */}
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value={sliderPosition}
+        onChange={(e) => setSliderPosition(Number(e.target.value))}
+        onMouseDown={() => setIsDragging(true)}
+        onMouseUp={() => setIsDragging(false)}
+        onTouchStart={() => setIsDragging(true)}
+        onTouchEnd={() => setIsDragging(false)}
+        className="absolute inset-0 z-30 w-full h-full opacity-0 cursor-ew-resize m-0 p-0 touch-pan-y"
+      />
     </div>
   );
 }
