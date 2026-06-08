@@ -25,6 +25,7 @@ export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProp
 
   const onTouchMove = (e: TouchEvent) => {
     if (!isDragging) return;
+    e.preventDefault(); // Prevent native scrolling while dragging
     handleMove(e.touches[0].clientX);
   };
 
@@ -55,7 +56,7 @@ export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProp
   return (
     <div 
       ref={containerRef}
-      className="relative w-full overflow-hidden rounded-xl bg-neutral-900 select-none aspect-[4/3] md:aspect-video cursor-ew-resize shadow-2xl"
+      className={`relative w-full overflow-hidden rounded-xl bg-neutral-900 select-none aspect-[4/3] md:aspect-video cursor-ew-resize shadow-2xl ${isDragging ? 'touch-none' : 'touch-pan-y'}`}
       onMouseDown={(e: ReactMouseEvent) => {
         setIsDragging(true);
         handleMove(e.clientX);
@@ -95,13 +96,13 @@ export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProp
       {/* Slider Handle */}
       <div 
         className="absolute top-0 bottom-0 w-1 bg-white z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)] transition-colors duration-150"
-        style={{ left: `calc(${sliderPosition}% - 2px)`, backgroundColor: isDragging ? '#818cf8' : 'white' }}
+        style={{ left: `calc(${sliderPosition}% - 2px)`, backgroundColor: isDragging ? '#0050d8' : 'white' }}
       >
         <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center border border-gray-200"
           style={{ transform: `translate(-50%, -50%) scale(${isDragging ? 1.1 : 1})`, transition: 'transform 0.15s ease' }}
         >
-          <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 text-[#0050d8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" transform="rotate(90 12 12)" />
           </svg>
         </div>

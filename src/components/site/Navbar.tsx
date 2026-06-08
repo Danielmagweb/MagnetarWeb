@@ -23,7 +23,7 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
-        className={`flex w-full max-w-6xl items-center justify-between rounded-2xl px-5 py-3 transition-all duration-500 ${
+        className={`flex w-full max-w-6xl items-center justify-between rounded-2xl px-3 py-3 sm:px-5 transition-all duration-500 ${
           scrolled ? "glass-strong shadow-card" : "border border-transparent"
         }`}
       >
@@ -43,7 +43,7 @@ export function Navbar() {
         </div>
         <a
           href="#contact"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-all hover:scale-[1.03] hover:shadow-elegant"
+          className="group inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-foreground px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium text-background transition-all hover:scale-[1.03] hover:shadow-elegant shrink-0 whitespace-nowrap"
         >
           Start Project
           <span className="transition-transform group-hover:translate-x-0.5">→</span>
