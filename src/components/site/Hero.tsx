@@ -25,21 +25,19 @@ export function Hero() {
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="mt-6 text-balance text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl">
-              <span className="text-gradient">Modern websites</span>{" "}
-              <span className="text-white">that help</span>{" "}
-              <span className="text-gradient-brand">businesses grow</span>
+              <span className="text-gradient">From Web Traffic</span>{" "}
+              <span className="text-white">to</span>{" "}
+              <span className="text-gradient-brand">Business Revenue.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-4 text-sm font-medium tracking-wide text-gradient-brand uppercase">
-              Command attention. Hold it forever.
+              Get a high-converting website now.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We design and develop fast, beautiful and conversion-focused
-              websites for businesses across the US. Built with modern technologies,
-              optimized for performance and designed to impress.
+              We build high-converting websites for US businesses with zero friction. You focus on your growth—we handle the strategy, design, and performance to turn your traffic into revenue.
             </p>
           </Reveal>
           <Reveal delay={0.3}>

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Features } from "@/components/site/Features";
+import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { Transformations } from "@/components/site/Transformations";
 import { Process } from "@/components/site/Process";
 import { Pricing } from "@/components/site/Pricing";
@@ -29,6 +30,7 @@ function Index() {
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
       <Hero />
+      <WhyChooseUs />
       <Features />
       <Transformations />
       <Process />

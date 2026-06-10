@@ -41,7 +41,7 @@ export function Features() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground">
-              Why MagnetarWeb
+              What you get
             </div>
             <h2 className="mt-5 text-balance text-4xl font-semibold tracking-tight md:text-5xl">
               <span className="text-gradient">Built for the next era</span>{" "}
