@@ -9,26 +9,26 @@ export function Transformations() {
     {
       title: "Creative Agency Redesign",
       desc: "From a bland 2012 corporate template to a clean, highly artistic digital presence.",
-      before: "/images/portfolio/agency_before.png",
-      after: "/images/portfolio/agency_after.png"
+      before: "/images/portfolio/agency_before.webp",
+      after: "/images/portfolio/agency_after.webp"
     },
     {
       title: "Local Bakery Modernization",
       desc: "From a chaotic, cluttered Web 1.0 layout to a warm, appetizing online storefront.",
-      before: "/images/portfolio/bakery_before.png",
-      after: "/images/portfolio/bakery_after.png"
+      before: "/images/portfolio/bakery_before.webp",
+      after: "/images/portfolio/bakery_after.webp"
     },
     {
       title: "Tech Brand Refresh",
       desc: "Replaced an outdated, neon-heavy design with a sleek, vibrant liquid dark mode.",
-      before: "/images/portfolio/tech_before.png",
-      after: "/images/portfolio/tech_after.png"
+      before: "/images/portfolio/tech_before.webp",
+      after: "/images/portfolio/tech_after.webp"
     },
     {
       title: "B2B Partnership Platform",
       desc: "Transformed walls of unreadable text into a premium, conversion-focused landing page.",
-      before: "/images/portfolio/corp_before.png",
-      after: "/images/portfolio/corp_after.png"
+      before: "/images/portfolio/corp_before.webp",
+      after: "/images/portfolio/corp_after.webp"
     }
   ];
 
