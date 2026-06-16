@@ -6,7 +6,7 @@ interface BeforeAfterProps {
 }
 
 export default function BeforeAfter({ beforeImage, afterImage }: BeforeAfterProps) {
-  const [sliderPosition, setSliderPosition] = useState(50);
+  const [sliderPosition, setSliderPosition] = useState(15);
   const [isDragging, setIsDragging] = useState(false);
 
   return (
